@@ -16,6 +16,8 @@
 double complex derivative(double complex (*f)(double complex), double complex z) {
     double h = 1e-6; // step size
     return (f(z + h) - f(z - h)) / (2.0 * h);
+    
+    // printf("%lf", derivative(*f,6););
 }
 
 // Example complex function: f(z) = z^2
@@ -32,6 +34,7 @@ struct Tokens{
 	char RELATIONAL_OP[64];
 	char EXP[64];
 	char EXPRESSION[64];
+	
 	int NUMBERS_COUNT;
 	int OPERATORS_COUNT;
 	int TRIGNO_COUNT;
@@ -53,15 +56,15 @@ void Function_Reader(){
 	
 	int arrayLen;
 	
-	while(true){
+	while(true){//"x + 4x"
 		
-		if(isspace(*p) && *p == '\t'){
+		if(isspace(*p) && *p == '\0'){
 			*p++;
 			arrayLen++;
 			continue;
 		}			//^()
 		else if(*p == '+' || *p == '-' || *p == '*' || *p == '/' || *p == '%%' || *p == '^' || *p == '(' || *p == ')'){
-			printf("operator : %c", *p);
+			printf("operator: %c", *p);
 			ILATE.OPERATORS[ILATE.OPERATORS_COUNT++] = *p;
 			p++;
 			arrayLen++;
@@ -75,7 +78,7 @@ void Function_Reader(){
 			
 		}
 		else if(isdigit(*p)){
-			const char *start;
+			const char *start = p;
 			
 			while(isdigit(*p) || *p == '.'){
 				ILATE.OPERATORS[ILATE.NUMBERS_COUNT++] = *p;
@@ -84,7 +87,7 @@ void Function_Reader(){
 			}
 			
 			int length = p - start;
-            printf("Number:   %.*s\n", length, start); 
+            printf("Number:   %.*s %c\n", length, start); 
             continue;
 		}
 		
@@ -105,6 +108,12 @@ void Function_Reader(){
 		else{
 		printf("Unknown:  %c\n", *p);
         p++;
+        
+        
+        printf("%p", &p);
+        printf("%d", arrayLen);
+        printf("%c", p);
+        
 	}
 }
 	
