@@ -12,15 +12,15 @@
 
 		// --DEFINITION-OF-DIFFERENTIATION USING COMPLEX-- //
 		
-//double complex derivative(double complex (*f)(double complex), double complex z) {
-//    double h = 1e-6; // step size
-//    return (f(z + h) - f(z - h)) / (2.0 * h);
-//}
-//
-//// Example complex function: f(z) = z^2
-//double complex FofX(double complex z) {
-//    return z * z;
-//}
+double complex derivative(double complex (*f)(double complex), double complex z) {
+    double h = 1e-6; // step size
+    return (f(z + h) - f(z - h)) / (2.0 * h);
+}
+
+// Example complex function: f(z) = z^2
+double complex FofX(double complex z) {
+    return z * z;
+}
 
 
 //  ------DX DIFFERENTIATION FUNCTION--------

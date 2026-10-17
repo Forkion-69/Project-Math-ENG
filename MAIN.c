@@ -8,6 +8,7 @@
 #include "ANSI-color-codes.h"
 
 
+
 //• isspace(c): Returns true if the character is a space, tab, or newline.
 //• isalpha(c): Returns true if the character is a letter (A-Z or a-z).
 //• isdigit(c): Returns true if the character is a number (0-9).
@@ -47,6 +48,7 @@ struct Tokens{
 
 
 void Function_Reader(){
+		//x + 4*x
 	
 	const char INPUT_FIELD[256];
 	
@@ -58,7 +60,7 @@ void Function_Reader(){
 	
 	while(true){//"x + 4x"
 		
-		if(isspace(*p) && *p == '\0'){
+		if(isspace(*p) || *p == '\0'){
 			*p++;
 			arrayLen++;
 			continue;
@@ -110,11 +112,14 @@ void Function_Reader(){
         p++;
         
         
+        
+        
         printf("%p", &p);
         printf("%d", arrayLen);
         printf("%c", p);
-        
+        continue;
 	}
+	break;
 }
 	
 }
