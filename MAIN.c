@@ -14,17 +14,17 @@
 //• isdigit(c): Returns true if the character is a number (0-9).
 
 
-double complex derivative(double complex (*f)(double complex), double complex z) {
-    double h = 1e-6; // step size
-    return (f(z + h) - f(z - h)) / (2.0 * h);
-    
-    // printf("%lf", derivative(*f,6););
-}
-
-// Example complex function: f(z) = z^2
-double complex FofX(double complex z) {
-    return z * z;
-}
+//double complex derivative(double complex (*f)(double complex), double complex z) {
+//    double h = 1e-6; // step size
+//    return (f(z + h) - f(z - h)) / (2.0 * h);
+//    
+//    // printf("%lf", derivative(*f,6););
+//}
+//
+//// Example complex function: f(z) = z^2
+//double complex FofX(double complex z) {
+//    return z * z;
+//}
 
 struct Tokens{
 
@@ -50,7 +50,7 @@ struct Tokens{
 void Function_Reader(){
 		//x + 4*x
 	
-	const char INPUT_FIELD[256];
+	char INPUT_FIELD[256];
 	
 	if (!fgets(INPUT_FIELD, sizeof INPUT_FIELD, stdin)) return;
 	
@@ -60,8 +60,8 @@ void Function_Reader(){
 	
 	while(true){//"x + 4x"
 		
-		if(isspace(*p) || *p == '\0'){
-			*p++;
+		if(isspace(*p) || *p == '\t'){
+			p++;
 			arrayLen++;
 			continue;
 		}			//^()
@@ -70,6 +70,7 @@ void Function_Reader(){
 			ILATE.OPERATORS[ILATE.OPERATORS_COUNT++] = *p;
 			p++;
 			arrayLen++;
+			printf(" %c ", ILATE.OPERATORS[ILATE.OPERATORS_COUNT]);
 			
 		}			//<>=!
 		else if(*p == '<' || *p == '>' || *p == '=' || *p == '!'){
@@ -101,10 +102,11 @@ void Function_Reader(){
 				p++;
 				ILATE.OPERATORS[ILATE.EXPRESSION_COUNT++] = *p;
 				arrayLen++;
+				printf("%c", *p);
 			}
 			
 			int length = p - start;
-            printf("Number:   %.*s\n", length, start); 
+            printf("WORD:   % *s %c\n", length, start); 
             continue;
 		}
 		else{
@@ -112,13 +114,16 @@ void Function_Reader(){
         p++;
         
         
-        
-        
-        printf("%p", &p);
+        printf("%p", p);
         printf("%d", arrayLen);
         printf("%c", p);
         continue;
+        
 	}
+		
+		printf("%p", p);
+        printf("%d", arrayLen);
+        printf("%c", p);
 	break;
 }
 	
