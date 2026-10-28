@@ -10,13 +10,13 @@
 float f(float x)
 {
 
-	return asinf(x);
+	return x * x + 1;
 }
 
 
 float fdx(float x)
 {
-	return 1/(1 + powf(x,2));
+	return 2 * x;
 }
 
 
@@ -41,11 +41,11 @@ int main(){
 		
 		if(derivative != NAN )
 		{
-			printf("Will satisfy LMVT");
-			double temp;
+			printf("Will satisfy LMVT \n");
+			float  temp;
 			temp = sqrt((a + b/(f(a)+f(b))-1));
 			
-			printf("%lf at  %lf with size %lf", temp, &temp,sizeof(temp));
+			printf("%lf", temp);
 			
 		}else{
 			return 0;

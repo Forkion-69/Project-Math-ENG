@@ -66,25 +66,23 @@ void Function_Reader(){
 			continue;
 		}			//^()
 		else if(*p == '+' || *p == '-' || *p == '*' || *p == '/' || *p == '%%' || *p == '^' || *p == '(' || *p == ')'){
-			printf("operator: %c", *p);
+			printf("operator: %c \n", *p);
 			ILATE.OPERATORS[ILATE.OPERATORS_COUNT++] = *p;
 			p++;
 			arrayLen++;
-			printf(" %c ", ILATE.OPERATORS[ILATE.OPERATORS_COUNT]);
 			
 		}			//<>=!
 		else if(*p == '<' || *p == '>' || *p == '=' || *p == '!'){
-			printf("operator : %c", *p);
+			printf("operator : %c \n", *p);
 			ILATE.OPERATORS[ILATE.OPERATORS_COUNT++] = *p;
 			p++;
 			arrayLen++;
-			
 		}
 		else if(isdigit(*p)){
 			const char *start = p;
 			
 			while(isdigit(*p) || *p == '.'){
-				ILATE.OPERATORS[ILATE.NUMBERS_COUNT++] = *p;
+				ILATE.NUMBERS[ILATE.NUMBERS_COUNT++] = *p;
 				p++;
 				arrayLen++;
 			}
@@ -98,11 +96,11 @@ void Function_Reader(){
 			const char *start = p;
 			
 			while(isalpha(*p) || *p == '.'){
-				printf("%c", *p);
+				printf("%c \n", *p);
 				p++;
-				ILATE.OPERATORS[ILATE.EXPRESSION_COUNT++] = *p;
+				ILATE.EXPRESSION[ILATE.EXPRESSION_COUNT++] = *p;
 				arrayLen++;
-				printf("%c", *p);
+				printf("%c \n", *p);
 			}
 			
 			int length = p - start;
@@ -113,17 +111,9 @@ void Function_Reader(){
 		printf("Unknown:  %c\n", *p);
         p++;
         
-        
-        printf("%p", p);
-        printf("%d", arrayLen);
-        printf("%c", p);
         continue;
         
 	}
-		
-		printf("%p", p);
-        printf("%d", arrayLen);
-        printf("%c", p);
 	break;
 }
 	
